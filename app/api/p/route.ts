@@ -1,7 +1,8 @@
 //api/p/route.ts
 import { NextResponse } from 'next/server';
-import dbConnect from '@/lib/dbConnect';
-import Test from '@/models/Test';
+import dbConnect from '../../../lib/dbConnect';
+import Test from '../../../models/Test';
+
 
 // GET all 
 export async function GET() {

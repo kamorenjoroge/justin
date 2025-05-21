@@ -1,7 +1,7 @@
 //api/p/[id]/route.ts
 import { NextResponse } from 'next/server';
-import dbConnect from '@/lib/dbConnect';
-import Test from '@/models/Test';
+import dbConnect from '../../../../lib/dbConnect';
+import Test from '../../../../models/Test';
 
 // GET /api/p/[id] - Get a single Test
 export async function GET(
