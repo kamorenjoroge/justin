@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useMemo } from 'react';
 import { FiSearch, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 

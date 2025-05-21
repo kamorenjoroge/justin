@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
 "use client";
 
 import dynamic from "next/dynamic";
@@ -58,8 +58,12 @@ const TestModal: React.FC<TestModalProps> = ({ type, data, id, onSuccess }) => {
         const result = await res.json();
         alert("Delete failed: " + result.error);
       }
-    } catch (err: any) {
-      alert("Error: " + err.message);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        alert("Error: " + err.message);
+      } else {
+        alert("An unknown error occurred.");
+      }
     } finally {
       setIsLoading(false);
     }
