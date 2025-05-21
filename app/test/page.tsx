@@ -18,6 +18,7 @@ const Page = () => {
   const fetchTests = async () => {
     try {
       setLoading(true);
+      setError(null);
       const response = await axios.get("/api/p");
       setTests(response.data.data || response.data);
     } catch (err) {
@@ -71,8 +72,32 @@ const Page = () => {
         <TestModal type="create" onSuccess={fetchTests} />
       </div>
 
+      {loading && (
+        <div className="mb-4 p-4 bg-blue-50 text-blue-700 rounded-lg">
+          Loading tests...
+        </div>
+      )}
+
+      {error && (
+        <div className="mb-4 p-4 bg-red-50 text-red-700 rounded-lg">
+          Error: {error}
+          <button 
+            onClick={fetchTests}
+            className="ml-4 px-3 py-1 bg-red-100 hover:bg-red-200 rounded"
+          >
+            Retry
+          </button>
+        </div>
+      )}
+
       <div className="overflow-x-auto">
-        <Table columns={columns} data={tests} renderRow={renderRow} />
+        {tests.length > 0 ? (
+          <Table columns={columns} data={tests} renderRow={renderRow} />
+        ) : !loading && !error ? (
+          <div className="p-4 bg-gray-50 text-gray-500 rounded-lg">
+            No tests found
+          </div>
+        ) : null}
       </div>
     </div>
   );
