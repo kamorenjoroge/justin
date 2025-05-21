@@ -1,11 +1,9 @@
-//api/p/[id]/route.ts
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '../../../../lib/dbConnect';
 import Test from '../../../../models/Test';
 
-// GET /api/p/[id] - Get a single Test
 export async function GET(
-  req: Request,
+  req: NextRequest,
   { params }: { params: { id: string } }
 ) {
   try {
@@ -21,9 +19,8 @@ export async function GET(
   }
 }
 
-// PUT /api/p/[id] - Update a Test
 export async function PUT(
-  req: Request,
+  req: NextRequest,
   { params }: { params: { id: string } }
 ) {
   try {
@@ -43,9 +40,8 @@ export async function PUT(
   }
 }
 
-// DELETE /api/p/[id] - Delete a Test
 export async function DELETE(
-  req: Request,
+  req: NextRequest,
   { params }: { params: { id: string } }
 ) {
   try {
